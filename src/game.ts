@@ -182,11 +182,13 @@ export class Game {
 
 			if (areEqual) {
 				console.log(
-					`Three-time repetition: Iterations (${numMoves -
-						interval} ... ${indexOfLastMove}) match ${numMoves -
-						2 * interval} ... ${indexOfLastMove -
-						interval} and ${numMoves -
-						3 * interval} ... ${indexOfLastMove - 2 * interval}.`
+					`Three-time repetition: Iterations (${
+						numMoves - interval
+					} ... ${indexOfLastMove}) match ${
+						numMoves - 2 * interval
+					} ... ${indexOfLastMove - interval} and ${
+						numMoves - 3 * interval
+					} ... ${indexOfLastMove - 2 * interval}.`
 				);
 
 				return true;

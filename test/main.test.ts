@@ -55,7 +55,7 @@ function createGameSetupInfo(
 	options?: IGameSetupOptions
 ): IGameSetupInfo {
 	return {
-		pieceSetupInfo: astr.map(str => createPieceSetupInfoEx(str)),
+		pieceSetupInfo: astr.map((str) => createPieceSetupInfoEx(str)),
 		options: options
 	};
 }
@@ -79,7 +79,9 @@ function printMovesToKingCapture(
 	if (typeof findBestMoveResult.movesToKingCapture !== 'undefined') {
 		console.log(
 			`${prefix}: findBestMoveResult.movesToKingCapture is`,
-			findBestMoveResult.movesToKingCapture.map(move => move.toString())
+			findBestMoveResult.movesToKingCapture.map((move) =>
+				move.toString()
+			)
 		);
 	}
 }

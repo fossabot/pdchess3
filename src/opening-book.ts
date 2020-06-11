@@ -36,7 +36,7 @@ function makeBookLeafNode(
 // 		this.moveList = moveList;
 // 		this.openingName = openingName;
 // 		this.childNodes = childNodes || [];
-// 		this.nodeWeight = nodeWeight || sum(this.childNodes.map((childNode: IOpeningBookRecordX) => childNode.nodeWeight));
+// 		this.nodeWeight = nodeWeight || sum(...this.childNodes.map((childNode: IOpeningBookRecordX) => childNode.nodeWeight));
 // 	}
 // }
 

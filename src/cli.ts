@@ -194,7 +194,7 @@ function isDone(findBestMoveResult: IFindBestMoveResult): boolean {
 
 		console.log(
 			'Moves to king capture:',
-			movesToKingCapture.map(move => move.toString())
+			movesToKingCapture.map((move) => move.toString())
 		);
 
 		// const mateInNMoves = Math.floor((movesToKingCapture.length - 3) / 2);

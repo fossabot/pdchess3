@@ -168,12 +168,14 @@ export class Move {
 		);
 
 		const initial = pieceTypeToInitial(this.movedPieceType);
-		const srcCoordinates = `${columnLabels[this.srcCol]}${this.srcRow +
-			1}`;
+		const srcCoordinates = `${columnLabels[this.srcCol]}${
+			this.srcRow + 1
+		}`;
 		const separator =
 			options.isCapturingMove || this.isCapturingMove ? 'x' : '-';
-		const dstCoordinates = `${columnLabels[this.dstCol]}${this.dstRow +
-			1}`;
+		const dstCoordinates = `${columnLabels[this.dstCol]}${
+			this.dstRow + 1
+		}`;
 		const suffix1 =
 			options.isEnPassantCapturingMove || this.isEnPassantCapturingMove
 				? ' EP'

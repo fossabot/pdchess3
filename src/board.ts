@@ -20,7 +20,7 @@ export interface IPieceSetupInfo {
 
 export class Board {
 	public readonly boardArea = boardSize * boardSize;
-	private readonly board: Array<Piece | undefined> = [];
+	private readonly board: (Piece | undefined)[] = [];
 
 	constructor(game: Game, gameSetupInfo?: IGameSetupInfo) {
 		this.clearBoard();

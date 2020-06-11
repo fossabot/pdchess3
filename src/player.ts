@@ -161,7 +161,7 @@ export class Player {
 
 	public totalMaterialValue(): number {
 		return sum(
-			this.pieces
+			...this.pieces
 				.filter((piece: Piece) => !piece.captured)
 				.map((piece: Piece) => piece.archetype.value)
 		);
@@ -352,10 +352,10 @@ export class Player {
 			console.log('generateMoves() was not called from findBestMove()');
 		} else {
 			console.log(
-				`  maxPly: ${
-					this.maxPlyWhenAutomated
-				}; extended maxPly: ${this.maxPlyWhenAutomated +
-					this.maxPlyExtensionWhenAutomated}`
+				`  maxPly: ${this.maxPlyWhenAutomated}; extended maxPly: ${
+					this.maxPlyWhenAutomated +
+					this.maxPlyExtensionWhenAutomated
+				}`
 			);
 			console.log(
 				'  numTimesGenerateMovesWasCalled:',
@@ -467,7 +467,7 @@ export class Player {
 		const isPlayerInCheckBeforeMove = this.isInCheck();
 
 		// Try each move in bestMoves until Alpha-Beta pruning terminates the search.
-		let bestMoves: Array<[Move, Move[] | undefined]> = [];
+		let bestMoves: [Move, Move[] | undefined][] = [];
 		// ... i.e. Array of [move, longestSequenceOfMovesToKingCapture]
 		let bestLineValue = NaN;
 		let mustMyKingBeCapturedInNextMove = ply < maxPly;
