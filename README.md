@@ -1,4 +1,6 @@
-<img src="assets/pdchess.128x128.icon.png" />
+<div style="text-align: center">
+	<img src="assets/pdchess.128x128.icon.png" />
+</div>
 
 # pdchess3
 
@@ -8,27 +10,68 @@ A rudimentary chess game engine and command-line interface.
 Written in TypeScript for Node.js and npm.
 
 [![build status](https://secure.travis-ci.org/tom-weatherhead/pdchess3.svg)](https://travis-ci.org/tom-weatherhead/pdchess3)
-[![npm](https://img.shields.io/npm/v/pdchess3.svg)](https://www.npmjs.com/package/pdchess3)
-[![npm](https://img.shields.io/npm/dt/pdchess3.svg)](https://www.npmjs.com/package/pdchess3)
-[![maintainability](https://api.codeclimate.com/v1/badges/2f473e151898df4d9f1f/maintainability)](https://codeclimate.com/github/tom-weatherhead/pdchess3/maintainability)
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-[![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest)
-[![test coverage](https://api.codeclimate.com/v1/badges/2f473e151898df4d9f1f/test_coverage)](https://codeclimate.com/github/tom-weatherhead/pdchess3/test_coverage)
+[![npm version](https://img.shields.io/npm/v/pdchess3.svg)](https://www.npmjs.com/package/pdchess3)
+[![npm total downloads](https://img.shields.io/npm/dt/pdchess3.svg)](https://www.npmjs.com/package/pdchess3)
 [![known vulnerabilities](https://snyk.io/test/github/tom-weatherhead/pdchess3/badge.svg?targetFile=package.json&package-lock.json)](https://snyk.io/test/github/tom-weatherhead/pdchess3?targetFile=package.json&package-lock.json)
+[![maintainability](https://api.codeclimate.com/v1/badges/2f473e151898df4d9f1f/maintainability)](https://codeclimate.com/github/tom-weatherhead/pdchess3/maintainability)
+[![test coverage](https://api.codeclimate.com/v1/badges/2f473e151898df4d9f1f/test_coverage)](https://codeclimate.com/github/tom-weatherhead/pdchess3/test_coverage)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/tom-weatherhead/pdchess3/blob/master/LICENSE)
 
-To build `pdchess` and install the command-line interface, do this:
+<!-- [![jest](https://jestjs.io/img/jest-badge.svg)](https://github.com/facebook/jest) -->
+
+## Building `pdchess3`
+
+To build `pdchess3` and install the command-line interface, do this:
 
 ```console
 npm run all
 npm link
 ```
 
-Use 'nice' to launch the pdchess process with a lower priority; e.g.:
+## Launching `pdchess3`
+
+After `npm link` has been run, `pdchess3` can be invoked from the command line using this syntax:
+
 ```console
-nice -n 20 pdchess c 5 c 5
+pdchess3 [White player configuration] [Black player configuration]
 ```
+
+... where each player's configuration is in one of two forms:
+
+- h: Human. The player's moves will be entered via the standard input.
+- c [max ply]: Computer. The player's moves will be calculated by `pdchess`'s game engine, using 'max ply' as the initial basic maximum lookahead depth.
+
+For example, if you want to play White while the computer plays Black, you could do this:
+
+```console
+pdchess3 h c 5
+```
+
+If you want the computer to play a slow game against itself, you could do this:
+
+```console
+pdchess3 c 6 c 6
+```
+
+You can use `nice` to launch the `pdchess3` process with a lower priority; e.g.:
+
+```console
+nice -n 20 pdchess3 c 5 c 5
+```
+
+## Moving pieces
+
+A fairly standard command syntax is used to specify moves; e.g.:
+
+- e2-e4 : An initial pawn move by White
+- Ng8-f6 : An initial knight move by Black
+- Qa1xd8 : A capturing move by a queen
+- O-O : Castle on the kingside
+- O-O-O : Castle on the queenside
+
+Type 'exit' at the move prompt to end the game and exit the app.
 
 ## History
 
