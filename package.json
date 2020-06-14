@@ -1,7 +1,7 @@
 {
 	"name": "pdchess3",
 	"version": "0.0.1",
-	"description": "A rudimentary chess game engine and command-line interface.",
+	"description": "A rudimentary chess engine and command-line interface.",
 	"keywords": [
 		"alpha-beta pruning",
 		"chess",
@@ -54,7 +54,7 @@
 		"preversion": "npm run lint",
 		"version": "npm run format && git add -A src",
 		"postversion": "git push && git push --tags",
-		"loc": "git ls-files -z *.ts | xargs -0 wc -l",
+		"loc": "git ls-files | grep -v package-lock.json | tr -d '\\r' | tr '\\n' '\\0' | xargs -0 wc -l",
 		"cli": "node lib/cli.js",
 		"f": "npm run format && npm run all",
 		"start": "npm run all",

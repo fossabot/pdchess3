@@ -6,7 +6,7 @@
 
 pdchess3 : Portable Didactic Chess, incarnation number 3.
 
-A rudimentary chess game engine and command-line interface.
+A rudimentary chess engine and command-line interface.
 Written in TypeScript for Node.js and npm.
 
 [![build status](https://secure.travis-ci.org/tom-weatherhead/pdchess3.svg)](https://travis-ci.org/tom-weatherhead/pdchess3)
@@ -61,7 +61,7 @@ You can use `nice` to launch the `pdchess3` process with a lower priority; e.g.:
 nice -n 20 pdchess3 c 5 c 5
 ```
 
-## Moving pieces
+## Playing `pdchess3`
 
 A fairly standard command syntax is used to specify moves; e.g.:
 
@@ -72,6 +72,64 @@ A fairly standard command syntax is used to specify moves; e.g.:
 - O-O-O : Castle on the queenside
 
 Type 'exit' at the move prompt to end the game and exit the app.
+
+## Example
+
+```
+$ pdchess3 h c 5
+
+8 rnbqkbnr
+7 pppppppp
+6  + + + +
+5 + + + + 
+4  + + + +
+3 + + + + 
+2 PPPPPPPP
+1 RNBQKBNR
+
+  abcdefgh
+
+Move 1: White
+> e2-e4
+
+Matched the manual move 'e2-e4' in the opening book.
+Elapsed time for this move: 2 milliseconds
+White's move: e2-e4
+
+8 rnbqkbnr
+7 pppppppp
+6  + + + +
+5 + + + + 
+4  + +P+ +
+3 + + + + 
+2 PPPP PPP
+1 RNBQKBNR
+
+  abcdefgh
+
+Move 1: Black
+Opening: Nimzovich Defence
+Black: Automated: Using this move from the opening book: b8-c6
+Elapsed time for this move: 1 millisecond
+Black's move: b8-c6
+
+8 r+bqkbnr
+7 pppppppp
+6  +n+ + +
+5 + + + + 
+4  + +P+ +
+3 + + + + 
+2 PPPP PPP
+1 RNBQKBNR
+
+  abcdefgh
+
+Move 2: White
+> exit
+Exiting...
+
+$
+```
 
 ## History
 
