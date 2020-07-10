@@ -65,6 +65,11 @@ export interface IFindBestMoveResult {
 	mustMyKingBeCapturedInNextMove: boolean;
 }
 
+interface IMakeMoveResult {
+	capturedPiece: Piece | undefined;
+	movedPiece: Piece | undefined;
+}
+
 export class Player {
 	public debugFlag = false; // Temporary. For testing only.
 	public enableFoolsMate = false;
@@ -167,7 +172,7 @@ export class Player {
 		);
 	}
 
-	public makeMove(move: Move): any {
+	public makeMove(move: Move): IMakeMoveResult {
 		let movedPiece: Piece | undefined;
 		let capturedPiece: Piece | undefined;
 		let isEnPassantCapturingMove = false;
@@ -739,8 +744,10 @@ export class Player {
 		if (determineBestMove && bestMoves.length > 0) {
 			if (preferBestMovesThatCheckmate) {
 				const filteredBestMoves = bestMoves.filter(
-					([move, x]: [Move, Move[] | undefined]) =>
-						move.isCheckmateMove
+					// ([move, x]: [Move, Move[] | undefined]) =>
+					// 	move.isCheckmateMove
+					(bestMove: [Move, Move[] | undefined]) =>
+						bestMove[0].isCheckmateMove
 				);
 
 				if (filteredBestMoves.length > 0) {
@@ -1063,8 +1070,8 @@ export class Player {
 							const capturedPieceTypeIndex = this.squareToPieceTypeIndex(
 								dstSquare
 							);
-							const capturedPieceType =
-								dstSquare.archetype.pieceType;
+							// const capturedPieceType =
+							// 	dstSquare.archetype.pieceType;
 
 							if (dstRow === this.pawnPromotionRow) {
 								// Promote the pawn (with capture).

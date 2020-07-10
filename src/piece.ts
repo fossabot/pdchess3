@@ -29,7 +29,7 @@ export class Piece {
 		return this.archetype.pieceType === PieceType.King;
 	}
 
-	public changePieceTypeTo(pieceType: PieceType) {
+	public changePieceTypeTo(pieceType: PieceType): void {
 		this.archetype = PieceArchetype.getArchetype(pieceType);
 	}
 } // class Piece

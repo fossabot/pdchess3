@@ -2,7 +2,10 @@
 
 'use strict'; // Is this of any use in Typescript?
 
-import { getIntervalStringFromMilliseconds } from 'thaw-common-utilities.ts';
+// import { getIntervalStringFromMilliseconds } from 'thaw-common-utilities.ts';
+// import { getIntervalStringFromMilliseconds } from '../node_modules/thaw-common-utilities.ts/lib/es2015/main';
+// const commonUtilities = require('../node_modules/thaw-common-utilities.ts/lib/es2015/main');
+// const getIntervalStringFromMilliseconds = commonUtilities.getIntervalStringFromMilliseconds;
 
 import {
 	columnLabels,
@@ -79,7 +82,7 @@ function printMovesToKingCapture(
 	if (typeof findBestMoveResult.movesToKingCapture !== 'undefined') {
 		console.log(
 			`${prefix}: findBestMoveResult.movesToKingCapture is`,
-			findBestMoveResult.movesToKingCapture.map((move) =>
+			findBestMoveResult.movesToKingCapture.map((move: Move) =>
 				move.toString()
 			)
 		);
@@ -877,7 +880,7 @@ test('Checkmate test 3a', () => {
 
 	expect(findBestMoveResult4.bestMove).toBeDefined();
 
-	const bestMove4 = findBestMoveResult4.bestMove as Move;
+	// const bestMove4 = findBestMoveResult4.bestMove as Move;
 
 	// expect(bestMove4.isCheckmateMove).toBeTruthy();
 
@@ -1040,15 +1043,15 @@ if (enableFoolsMate) {
 		// Assert
 		expect(findBestMoveResult.bestMove).toBeDefined();
 
-		const bestMove = findBestMoveResult.bestMove as Move;
+		// const bestMove = findBestMoveResult.bestMove as Move;
 
 		console.log("Fool's mate: findBestMoveResult is", findBestMoveResult);
 		console.log(
-			`Fool\'s mate: bestMove is ${findBestMoveResult.bestMove}`
+			`Fool's mate: bestMove is ${findBestMoveResult.bestMove}`
 		);
 		printMovesToKingCapture("Fool's mate", findBestMoveResult);
 		console.log(
-			`Fool\'s mate: bestLineValue is ${findBestMoveResult.bestLineValue}`
+			`Fool's mate: bestLineValue is ${findBestMoveResult.bestLineValue}`
 		);
 
 		// expect(Number.isNaN(findBestMoveResult.bestLineValue)).toBeFalsy();

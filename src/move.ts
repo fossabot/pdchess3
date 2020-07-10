@@ -47,7 +47,7 @@ export class Move {
 			return Move.makeCastlingMove(false);
 		}
 
-		const pawnPromotionRegex = /\=([NBRQ])/;
+		const pawnPromotionRegex = /=([NBRQ])/;
 
 		const matchPawnPromotionRegex = input
 			// .substring(5)

@@ -1,6 +1,6 @@
 // github:tom-weatherhead/pdchess3/src/opening-book.ts
 
-import { getRandomArrayElement, sum } from 'thaw-common-utilities.ts';
+import { getRandomArrayElement } from 'thaw-common-utilities.ts';
 
 import { Move } from './move';
 
@@ -572,7 +572,7 @@ class OpeningBook implements IOpeningBook {
 	private currentNode: IOpeningBookRecord | undefined = data;
 	private indexIntoCurrentMoveList = 0;
 
-	private constructor() {}
+	// private constructor() {}
 
 	public get isOpen(): boolean {
 		return this.isOpenValue;
