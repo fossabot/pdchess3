@@ -20,10 +20,11 @@
 	"main": "lib/main.js",
 	"types": "lib/main.d.ts",
 	"files": [
+		"./loader.js",
 		"lib/**/*"
 	],
 	"bin": {
-		"pdchess3": "lib/cli.js"
+		"pdchess3": "./loader.js"
 	},
 	"man": [],
 	"directories": {
@@ -48,7 +49,8 @@
 		"build-es2015cjs": "tsc --build tsconfig.es2015cjs.json",
 		"build-es2015mjs": "tsc --build tsconfig.es2015mjs.json",
 		"build": "rm -rf lib; if [ -z \"$BUILD_ESM\" ]; then npm run build-es2015cjs; else npm run build-es2015mjs; fi",
-		"test": "if [ -z \"$BUILD_ESM\" ]; then jest; else echo \"Testing disabled for Angular.\"; fi",
+		"test-old": "if [ -z \"$BUILD_ESM\" ]; then jest; else echo \"Testing disabled for Angular.\"; fi",
+		"test": "jest",
 		"deploy": "eval mv $npm_package_name-$npm_package_version.tgz $(echo $npm_package_config_deploy_target_dir)/",
 		"prepare": "npm run build",
 		"prepublishOnly": "npm test && npm run lint",
@@ -56,7 +58,7 @@
 		"version": "npm run format && git add -A src",
 		"postversion": "git push && git push --tags",
 		"loc": "git ls-files | grep -v package-lock.json | tr -d '\\r' | tr '\\n' '\\0' | xargs -0 wc -l",
-		"cli": "node lib/cli.js",
+		"cli": "node -r esm lib/cli.js",
 		"f": "npm run format && npm run all",
 		"start": "npm run all",
 		"t55": "nice -n 20 pdchess3 c 5 c 5",
@@ -71,6 +73,7 @@
 	},
 	"publishConfig": {},
 	"dependencies": {
+		"esm": "^3.2.25",
 		"thaw-common-utilities.ts": "file:thaw-common-utilities.ts.tgz",
 		"thaw-repl": "file:thaw-repl.tgz"
 	},

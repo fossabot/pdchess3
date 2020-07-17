@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#! /usr/bin/env node -r esm
 
 // github:tom-weatherhead/pdchess3/src/cli.ts
 
@@ -13,6 +13,14 @@ import { Move } from './move';
 import { getOpeningBookInstance } from './opening-book';
 import { PieceArchetype } from './piece-archetype';
 import { IFindBestMoveResult, Player } from './player';
+// import {
+// 	Game,
+// 	getOpeningBookInstance,
+// 	IFindBestMoveResult,
+// 	Move,
+// 	PieceArchetype,
+// 	Player
+// } from '..';
 
 const game = new Game();
 let currentPlayer = game.whitePlayer;
