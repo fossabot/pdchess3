@@ -13,5 +13,5 @@ module.exports = {
 	"moduleFileExtensions": ["ts", "js"],
 	"testEnvironment": "node",
 	"testRegex": "(/test/.+\\.test\\.ts$)",
-	"transformIgnorePatterns": ["/node_modules/(?!thaw-common-utilities.ts)/"]
+	"transformIgnorePatterns": ["/node_modules/(?!(thaw-common-utilities.ts|thaw-repl))/"]
 };

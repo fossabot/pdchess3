@@ -36,7 +36,7 @@
 		"test": ""
 	},
 	"scripts": {
-		"all": "npm run travis && chmod +x lib/cli.js && npm pack && npm run deploy",
+		"all": "npm run travis && npm pack && npm run deploy",
 		"travis": "npm run rebuild-online",
 		"rebuild-offline": "npm run clean-offline && npm run build-and-test",
 		"clean-offline": "rm -rf coverage",
@@ -45,11 +45,8 @@
 		"build-and-test": "npm run prettiercheck && npm run lint && npm run build && npm test",
 		"prettiercheck": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
 		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-		"lint": "eslint . --ext .ts",
-		"build-es2015cjs": "tsc --build tsconfig.es2015cjs.json",
-		"build-es2015mjs": "tsc --build tsconfig.es2015mjs.json",
-		"build": "rm -rf lib; if [ -z \"$BUILD_ESM\" ]; then npm run build-es2015cjs; else npm run build-es2015mjs; fi",
-		"test-old": "if [ -z \"$BUILD_ESM\" ]; then jest; else echo \"Testing disabled for Angular.\"; fi",
+		"lint": "eslint . --ext .js --ext .ts",
+		"build": "rm -rf lib; tsc",
 		"test": "jest",
 		"deploy": "eval mv $npm_package_name-$npm_package_version.tgz $(echo $npm_package_config_deploy_target_dir)/",
 		"prepare": "npm run build",
@@ -58,15 +55,9 @@
 		"version": "npm run format && git add -A src",
 		"postversion": "git push && git push --tags",
 		"loc": "git ls-files | grep -v package-lock.json | tr -d '\\r' | tr '\\n' '\\0' | xargs -0 wc -l",
-		"cli": "node -r esm lib/cli.js",
 		"f": "npm run format && npm run all",
 		"start": "npm run all",
-		"t55": "nice -n 20 pdchess3 c 5 c 5",
-		"t65": "nice -n 20 pdchess3 c 6 c 5",
-		"t66": "nice -n 20 pdchess3 c 6 c 6",
-		"t76": "nice -n 20 pdchess3 c 7 c 6",
-		"y": "npm run format && npm run all",
-		"z": "npm run y && npm run t55"
+		"t55": "nice -n 20 pdchess3 c 5 c 5"
 	},
 	"config": {
 		"deploy_target_dir": "$NPM_PKG_DIR"
@@ -78,17 +69,16 @@
 		"thaw-repl": "file:thaw-repl.tgz"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.10.5",
-		"@babel/plugin-transform-modules-commonjs": "^7.10.4",
-		"@babel/preset-env": "^7.10.4",
+		"@babel/core": "^7.11.0",
+		"@babel/preset-env": "^7.11.0",
 		"@babel/preset-typescript": "^7.10.4",
-		"@types/jest": "^26.0.5",
-		"@types/node": "^14.0.24",
-		"@typescript-eslint/eslint-plugin": "^3.7.0",
-		"@typescript-eslint/parser": "^3.7.0",
+		"@types/jest": "^26.0.7",
+		"@types/node": "^14.0.27",
+		"@typescript-eslint/eslint-plugin": "^3.7.1",
+		"@typescript-eslint/parser": "^3.7.1",
 		"codecov": "^3.7.2",
 		"eslint": "^7.5.0",
-		"jest": "^26.1.0",
+		"jest": "^26.2.1",
 		"prettier": "^2.0.5",
 		"typescript": "^3.9.7"
 	},

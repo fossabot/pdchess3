@@ -418,7 +418,7 @@ if (game.whitePlayer.isAutomated && game.whitePlayer.isAutomated) {
 			console.log('readEvaluatePrintLoop() resolved successfully.\n');
 			console.log('Winner:', winner);
 		})
-		.catch((error: any) => {
+		.catch((error: unknown) => {
 			// process.stderr.write(`Error in readEvaluatePrintLoop(): ${typeof error} ${error}\n`);
 			console.error(
 				'Error in readEvaluatePrintLoop():',
